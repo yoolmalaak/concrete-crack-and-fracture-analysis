@@ -1,0 +1,6 @@
+,crack_area_percentage,crack_area_percentage,crack_area_percentage,crack_area_percentage,crack_length_pixels,crack_length_pixels,crack_length_pixels,crack_length_pixels,mean_width_pixels,mean_width_pixels,mean_width_pixels,mean_width_pixels,max_width_pixels,max_width_pixels,max_width_pixels,max_width_pixels,branching_points,branching_points,branching_points,branching_points
+,count,mean,median,std,count,mean,median,std,count,mean,median,std,count,mean,median,std,count,mean,median,std
+category,,,,,,,,,,,,,,,,,,,,
+deck,595,2.339,1.801,1.981,595,194.405,178.409,128.948,595,5.177,4.985,1.859,595,12.896,11.662,6.729,595,2.297,0.0,3.745
+pavement,1249,4.292,3.413,3.955,1249,244.615,228.593,187.48,1249,7.435,6.525,3.061,1249,21.533,18.974,11.037,1249,5.696,2.0,8.546
+wall,757,1.574,0.836,1.572,757,205.001,211.0,122.48,757,3.837,4.421,1.609,757,8.496,10.0,5.79,757,1.055,0.0,2.511

@@ -1,0 +1,16 @@
+Category,Morphology,N,Mean,Median,Std,Minimum,Q1,Q3,Maximum
+deck,Predicted crack area (%),595,2.339,1.801,1.981,0.031,0.769,3.638,17.085
+deck,Predicted crack length (pixels),595,194.405,178.409,128.948,2.828,82.234,295.779,670.465
+deck,Predicted mean width (pixels),595,5.177,4.985,1.859,2.0,4.494,5.609,20.043
+deck,Predicted maximum width (pixels),595,12.896,11.662,6.729,2.0,10.0,14.56,57.585
+deck,Predicted branching points,595,2.297,0.0,3.745,0.0,0.0,4.0,18.0
+pavement,Predicted crack area (%),1249,4.292,3.413,3.955,0.031,1.169,6.178,26.135
+pavement,Predicted crack length (pixels),1249,244.615,228.593,187.48,2.414,84.012,339.622,1023.235
+pavement,Predicted mean width (pixels),1249,7.435,6.525,3.061,2.0,5.376,9.02,23.417
+pavement,Predicted maximum width (pixels),1249,21.533,18.974,11.037,2.0,13.416,28.0,72.801
+pavement,Predicted branching points,1249,5.696,2.0,8.546,0.0,0.0,8.0,66.0
+wall,Predicted crack area (%),757,1.574,0.836,1.572,0.031,0.333,2.858,8.383
+wall,Predicted crack length (pixels),757,205.001,211.0,122.48,1.414,102.042,266.74,663.914
+wall,Predicted mean width (pixels),757,3.837,4.421,1.609,2.0,2.0,5.013,14.564
+wall,Predicted maximum width (pixels),757,8.496,10.0,5.79,2.0,2.0,12.806,42.19
+wall,Predicted branching points,757,1.055,0.0,2.511,0.0,0.0,0.0,23.0
