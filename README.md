@@ -1,10 +1,11 @@
 # Concrete Crack and Fracture Analysis
 
-A data-driven study of concrete crack patterns and fracture energy using **deep learning, image processing, and machine learning**.
+A data-driven study of concrete crack patterns and fracture energy using
+**deep learning, image processing, and machine learning**.
 
 ## Overview
 
-This project uses three public datasets, analysed in two independent parts:
+This project uses three public datasets, analyzed in two independent parts:
 
 | Dataset | Content | Used for |
 | --- | --- | --- |
@@ -12,25 +13,32 @@ This project uses three public datasets, analysed in two independent parts:
 | **SDNET2018** | 56,092 concrete images (cracked / uncracked) | CNN classification; U-Net transfer and crack morphology analysis |
 | **ConcreteTBF** | 330 three-point-bending fracture observations | Fracture-energy (`Gc`) prediction |
 
-The image datasets and ConcreteTBF are analysed independently because they do not contain specimen-level correspondence.
+The image datasets and ConcreteTBF are analyzed independently because they do
+not contain specimen-level correspondence.
 
 ## Methodology
 
 ### 1. Crack image analysis
 
-- **CNN classification:** cracked / uncracked classification on SDNET2018, used as a baseline.
-- **U-Net segmentation:** trained on CrackSeg9K, then transferred to SDNET2018 (transfer learning) to segment crack regions.
-- **Morphology extraction** from predicted crack masks (6,000 SDNET2018 images analysed): crack area, length, width, orientation, and branching.
+- **CNN classification:** cracked / uncracked classification on SDNET2018, used
+as a baseline.
+- **U-Net segmentation:** trained on CrackSeg9K, then transferred to SDNET2018
+(transfer learning) to segment crack regions.
+- **Morphology extraction** from predicted crack masks (6,000 SDNET2018 images
+analyzed): crack area, length, width, orientation, and branching.
 
 ### 2. Fracture energy analysis
 
 Machine-learning regression models predict the reported fracture energy (`Gc`) from:
 
-`d` (specimen depth), `S` (span), `bw` (specimen width), `a0` (initial notch length), `ft` (tensile strength), `E` (elastic modulus)
+`d` (specimen depth), `S` (span), `bw` (specimen width), `a0` (initial notch
+length), `ft` (tensile strength), `E` (elastic modulus)
 
 Models: Linear Regression, Random Forest, Gradient Boosting, XGBoost.
 
-Models were trained with five-fold cross-validation and evaluated on an independent test set, using fixed, manually specified hyperparameters. No systematic hyperparameter search was performed.
+Models were trained with five-fold cross-validation and evaluated on an
+independent test set, using fixed, manually specified hyperparameters.
+No systematic hyperparameter search was performed.
 
 ## Key Results
 
@@ -44,7 +52,10 @@ Models were trained with five-fold cross-validation and evaluated on an independ
 | Cracked-class F1 | 55.73% |
 | Accuracy | 83.67% |
 
-> Only about 15% of the test images are cracked, so accuracy is not a reliable measure here (always predicting "uncracked" would score about 85%). ROC-AUC, recall, and F1 are more informative. This CNN is a baseline; class-imbalance handling and threshold tuning are future work.
+> Only about 15% of the test images are cracked, so accuracy is not a reliable
+> measure here (always predicting "uncracked" would score about 85%). ROC-AUC,
+> recall, and F1 are more informative. This CNN is a baseline; class-imbalance
+> handling and threshold tuning are future work.
 
 ### Crack segmentation (U-Net, CrackSeg9K)
 
@@ -55,7 +66,9 @@ Models were trained with five-fold cross-validation and evaluated on an independ
 
 ### Crack morphology (SDNET2018, U-Net predictions)
 
-Of 6,000 images, 2,601 (43.35%) contained predicted crack regions (1,896 labelled cracked and 705 labelled uncracked in the original dataset). Descriptors were computed for these 2,601 images, in pixel units.
+Of 6,000 images, 2,601 (43.35%) contained predicted crack regions (1,896
+labelled cracked and 705 labelled uncracked in the original dataset).
+Descriptors were computed for these 2,601 images, in pixel units.
 
 | Descriptor | Mean | Median | Maximum |
 | --- | ---: | ---: | ---: |
@@ -65,7 +78,8 @@ Of 6,000 images, 2,601 (43.35%) contained predicted crack regions (1,896 labelle
 | Maximum crack width (px) | 15.76 | 13.42 | 72.80 |
 | Branching points | 3.57 | 0 | 66 |
 
-Most predicted cracks are unbranched (median 0 branching points), with a minority of heavily branched cracks.
+Most predicted cracks are unbranched (median 0 branching points), with a
+minority of heavily branched cracks.
 
 ### Fracture energy prediction (`Gc`, ConcreteTBF)
 
@@ -76,12 +90,16 @@ Most predicted cracks are unbranched (median 0 branching points), with a minorit
 | Gradient Boosting | 0.380 | 0.0215 | 0.540 | 0.0188 | **0.0124** |
 | XGBoost | 0.426 | 0.0207 | 0.549 | 0.0186 | 0.0138 |
 
-Nonlinear ensemble models clearly outperformed Linear Regression, indicating a nonlinear relationship between the inputs and fracture energy. Predictive accuracy remains moderate, which is expected with only 330 observations.
+Nonlinear ensemble models clearly outperformed Linear Regression, indicating
+a nonlinear relationship between the inputs and fracture energy.
+Predictive accuracy remains moderate, which is expected with only 330 observations.
 
 ## Limitations
 
 - The two parts (crack images and fracture energy) are not linked at specimen level.
-- Segmentation scores (Dice 0.69, IoU 0.57) reflect the difficulty of thin, irregular cracks; some predicted cracks in images labelled "uncracked" may be false positives or unlabelled cracks.
+- Segmentation scores (Dice 0.69, IoU 0.57) reflect the difficulty of thin,
+irregular cracks; some predicted cracks in images labelled "uncracked" may
+be false positives or unlabelled cracks.
 - Morphology measurements are in pixels and are not calibrated to physical units.
 - The fracture-energy dataset is small, and no hyperparameter search was performed.
 

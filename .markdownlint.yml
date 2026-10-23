@@ -9,10 +9,7 @@ MD007: # Unordered list indentation
   indent: 2
 
 # Line length and whitespace
-MD013: # Line length
-  line_length: 80
-  strict: false
-  stern: false
+MD013: False
 
 # Spacing and formatting
 MD022: # Headings should be surrounded by blank lines
